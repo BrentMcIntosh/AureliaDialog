@@ -1,0 +1,22 @@
+<template>
+	<div class="rounded">
+		<table>
+			<tr>
+				<td>
+					<a href.bind='event.detailUrl'><span textContent.bind='event.title'></span></a>
+				</td>
+			</tr>
+			<!--<tr>
+				<td>
+					<h5>${event.dateTime}</h5>
+				</td>
+			</tr>
+			<tr>
+				<td innerHtml.bind='event.description | sanitizeHTML'>
+				</td>
+			</tr>-->
+		</table>
+		<!--<div textContent.bind='event.description' contenteditable='true'></div>-->
+		<!-- <div textContent.one-way='event.description' contenteditable='true'></div> -->
+	</div>
+</template>

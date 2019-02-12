@@ -1,0 +1,137 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SampleData\State.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\dist\Add-New.png" />
+    <Content Remove="wwwroot\dist\banner.gif" />
+    <Content Remove="wwwroot\dist\BrianNoyes.png" />
+    <Content Remove="wwwroot\dist\Edit.png" />
+    <Content Remove="wwwroot\dist\EdSnider.jpg" />
+    <Content Remove="wwwroot\dist\GAndrewDuthie.jpg" />
+    <Content Remove="wwwroot\dist\JeffFritz.jpg" />
+    <Content Remove="wwwroot\dist\KevinGriffin.jpg" />
+    <Content Remove="wwwroot\dist\KevinJones.png" />
+    <Content Remove="wwwroot\dist\MichaelStiefel.jpg" />
+    <Content Remove="wwwroot\dist\MikeWood.jpg" />
+    <Content Remove="wwwroot\dist\Prism.png" />
+    <Content Remove="wwwroot\dist\RiccardoTerrell.jpg" />
+    <Content Remove="wwwroot\dist\ShahedChowdhuri.jpg" />
+    <Content Remove="wwwroot\dist\SoftwareInsight.png" />
+    <Content Remove="wwwroot\dist\SteveAlbers.jpg" />
+    <Content Remove="wwwroot\dist\stevefabian.jpg" />
+    <Content Remove="wwwroot\dist\SteveMichelotti.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\common\bootstrap-form-renderer.ts" />
+    <None Remove="ClientApp\common\dateFormat.ts" />
+    <None Remove="ClientApp\common\freshness.ts" />
+    <None Remove="ClientApp\common\interceptor.ts" />
+    <None Remove="ClientApp\common\NotificationPayload.ts" />
+    <None Remove="ClientApp\discussion\discussion.ts" />
+    <None Remove="ClientApp\events\EditDialog.ts" />
+    <None Remove="ClientApp\events\eventDetail.ts" />
+    <None Remove="ClientApp\events\events.ts" />
+    <None Remove="ClientApp\events\eventsList.ts" />
+    <None Remove="ClientApp\jobs\addJob.ts" />
+    <None Remove="ClientApp\jobs\jobs.ts" />
+    <None Remove="ClientApp\services\dataRepository.ts" />
+    <None Remove="ClientApp\shell.ts" />
+    <None Remove="ClientApp\sideBar\ads.ts" />
+    <None Remove="ClientApp\sideBar\sponsors.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Models\State.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
+    <PackageReference Include="toastr" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\dist\Add-New.png" />
+    <None Include="wwwroot\dist\banner.gif" />
+    <None Include="wwwroot\dist\BrianNoyes.png" />
+    <None Include="wwwroot\dist\Edit.png" />
+    <None Include="wwwroot\dist\EdSnider.jpg" />
+    <None Include="wwwroot\dist\GAndrewDuthie.jpg" />
+    <None Include="wwwroot\dist\JeffFritz.jpg" />
+    <None Include="wwwroot\dist\KevinGriffin.jpg" />
+    <None Include="wwwroot\dist\KevinJones.png" />
+    <None Include="wwwroot\dist\MichaelStiefel.jpg" />
+    <None Include="wwwroot\dist\MikeWood.jpg" />
+    <None Include="wwwroot\dist\Prism.png" />
+    <None Include="wwwroot\dist\RiccardoTerrell.jpg" />
+    <None Include="wwwroot\dist\ShahedChowdhuri.jpg" />
+    <None Include="wwwroot\dist\SoftwareInsight.png" />
+    <None Include="wwwroot\dist\SteveAlbers.jpg" />
+    <None Include="wwwroot\dist\stevefabian.jpg" />
+    <None Include="wwwroot\dist\SteveMichelotti.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\common\bootstrap-form-renderer.ts" />
+    <TypeScriptCompile Include="ClientApp\common\dateFormat.ts" />
+    <TypeScriptCompile Include="ClientApp\common\freshness.ts" />
+    <TypeScriptCompile Include="ClientApp\common\interceptor.ts" />
+    <TypeScriptCompile Include="ClientApp\common\NotificationPayload.ts" />
+    <TypeScriptCompile Include="ClientApp\discussion\discussion.ts" />
+    <TypeScriptCompile Include="ClientApp\events\EditDialog.ts" />
+    <TypeScriptCompile Include="ClientApp\events\eventDetail.ts" />
+    <TypeScriptCompile Include="ClientApp\events\events.ts" />
+    <TypeScriptCompile Include="ClientApp\events\eventsList.ts" />
+    <TypeScriptCompile Include="ClientApp\jobs\addJob.ts" />
+    <TypeScriptCompile Include="ClientApp\jobs\jobs.ts" />
+    <TypeScriptCompile Include="ClientApp\services\dataRepository.ts" />
+    <TypeScriptCompile Include="ClientApp\shell.ts" />
+    <TypeScriptCompile Include="ClientApp\sideBar\ads.ts" />
+    <TypeScriptCompile Include="ClientApp\sideBar\sponsors.ts" />
+  </ItemGroup>
+
+  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+    <!-- In development, the dist files won't exist on the first run or when cloning to
+				 a different machine, so rebuild them if not already present. -->
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
+    <Exec Command="npm run webpack:dev" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec Command="npm install" />
+    <Exec Command="npm run webpack:dev" Condition="'$(Configuration)' == 'Debug'" />
+    <Exec Command="npm run webpack:prod" Condition="'$(Configuration)' == 'Release'" />
+    
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="wwwroot\dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

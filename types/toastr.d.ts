@@ -1,0 +1,10 @@
+export function clear($toastElement: any, clearOptions: any): void;
+export function error(message: any, title: any, optionsOverride: any): any;
+export function getContainer(options: any, create: any): any;
+export function info(message: any, title: any, optionsOverride: any): any;
+export const options: {};
+export function remove($toastElement: any): void;
+export function subscribe(callback: any): void;
+export function success(message: any, title: any, optionsOverride: any): any;
+export const version: string;
+export function warning(message: any, title: any, optionsOverride: any): any;
