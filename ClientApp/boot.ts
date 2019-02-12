@@ -13,6 +13,7 @@ export function configure(aurelia: Aurelia) {
 
 	aurelia.use.standardConfiguration().plugin(PLATFORM.moduleName('aurelia-dialog'));
 
+
 	//, config => {
 	//	config.useDefaults();
 	//	config.settings.lock = true;
