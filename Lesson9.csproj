@@ -44,6 +44,7 @@
     <None Remove="ClientApp\events\events.ts" />
     <None Remove="ClientApp\events\eventsList.ts" />
     <None Remove="ClientApp\jobs\addJob.ts" />
+    <None Remove="ClientApp\jobs\Job.ts" />
     <None Remove="ClientApp\jobs\jobs.ts" />
     <None Remove="ClientApp\services\dataRepository.ts" />
     <None Remove="ClientApp\shell.ts" />
@@ -98,6 +99,7 @@
     <TypeScriptCompile Include="ClientApp\events\events.ts" />
     <TypeScriptCompile Include="ClientApp\events\eventsList.ts" />
     <TypeScriptCompile Include="ClientApp\jobs\addJob.ts" />
+    <TypeScriptCompile Include="ClientApp\jobs\Job.ts" />
     <TypeScriptCompile Include="ClientApp\jobs\jobs.ts" />
     <TypeScriptCompile Include="ClientApp\services\dataRepository.ts" />
     <TypeScriptCompile Include="ClientApp\shell.ts" />

@@ -11,7 +11,10 @@ export function configure(aurelia: Aurelia) {
 
 	aurelia.use.globalResources(["common/dateFormat", "common/freshness", "common/interceptor" ]);
 
-	aurelia.use.standardConfiguration().plugin(PLATFORM.moduleName('aurelia-dialog'));
+	aurelia.use
+		.standardConfiguration()
+		.plugin(PLATFORM.moduleName('aurelia-dialog'))
+		.plugin(PLATFORM.moduleName('aurelia-validation'));
 
 
 	//, config => {

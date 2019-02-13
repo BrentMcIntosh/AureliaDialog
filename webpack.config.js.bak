@@ -39,10 +39,11 @@ module.exports = (env, argv) => {
 				{ test: /\.css$/i, exclude: [/node_modules/], issuer: /\.html$/i, use: cssLoader },
 				{ test: /\.css$/i, exclude: [/node_modules/], issuer: [{ not: [{ test: /\.html$/i }] }], use: ["style-loader", cssLoader] },
 				{ test: /\.scss$/i, issuer: /(\.html|empty-entry\.js)$/i, use: [cssLoader, "sass-loader"] },
-                { test: /\.scss$/i, issuer: /\.ts$/i, use: ["style-loader", cssLoader, "sass-loader"] }
+                { test: /\.scss$/i, issuer: /\.ts$/i, use: ["style-loader", cssLoader, "sass-loader"] },
+                { test: /\.less$/, use: ["style-loader", cssLoader, "less-loader"] },
 
-                //{ test: /\.css?$/, loader: 'style!css', exclude: /aurelia-dialog/ },
-                //{ test: /\.css?$/, loader: 'raw', include: /aurelia-dialog/ }
+                //{ test: /\.css?$/, exclude: /aurelia-dialog/, use: [ "style-loader", "css-loader" ] },
+                //{ test: /\.css?$/, include: /aurelia-dialog/, use: [ "raw-loader" ] }
 			]
 		},
         optimization: {
@@ -93,7 +94,7 @@ module.exports = (env, argv) => {
                 aureliaApp: "boot",
                 includeSubModules: [
                     { moduleId: 'aurelia-dialog' },
-                    { moduleId: 'aurelia-validation' },
+                    { moduleId: 'aurelia-validation' }
                 ]
             }),
 

@@ -2,11 +2,13 @@ import { inject } from 'aurelia-framework';
 import { DataRepository } from '../services/dataRepository';
 import { ValidationRules, ValidationController, validateTrigger } from 'aurelia-validation';
 import { BootstrapFormRenderer } from '../common/bootstrap-form-renderer';
+//import { BootstrapFormValidationRenderer } from '../common/bootstrap-form-validation-renderer';
+import { IJob } from "./Job";
 
 @inject(DataRepository, ValidationController)
 export class AddJob {
 
-	job: any;
+	job: IJob;
 
 	dataRepository: DataRepository;
 
@@ -22,7 +24,7 @@ export class AddJob {
 
 	constructor(dataRepository: DataRepository, controller: ValidationController) {
 
-		this.job = { jobType: "Full Time", jobSkills: [] };
+		this.job = { title: "", jobType: "Full Time", description: "", needDate: new Date(), jobSkills: [] };
 
 		this.dataRepository = dataRepository;
 
@@ -38,22 +40,24 @@ export class AddJob {
 			this.jobSkills = jobSkills;
 		});
 
-		//this.controller = controller;
-		//this.controller.validateTrigger = validateTrigger.change;
+		this.controller = controller;
+
+		this.controller.validateTrigger = validateTrigger.change;
+
 		//this.controller.addRenderer(new BootstrapFormRenderer());
 
-		//ValidationRules.customRule(
-		//	'notCEO',
-		//	(value,object) => value !== 'CEO',
-		//	`nice try, \${$displayName} cannot be \${$value}`
-		//	);
+		ValidationRules.customRule(
+			'notCEO',
+			(value, object) => value !== 'CEO',
+			`nice try, \${$displayName} cannot be \${$value}`
+		);
 
-		//ValidationRules
-		//.ensure(j => j.title)
-		//.required()
-		//.minLength(3)
-		//.satisfiesRule('notCEO')
-		//.on(this.job);
+		ValidationRules
+			.ensure((j: IJob) => j.title)
+			.required()
+			.minLength(3)
+			.satisfiesRule('notCEO')
+			.on(this.job);
 
 	}
 
@@ -65,7 +69,7 @@ export class AddJob {
 
 		console.log(this.job);
 
-		//if (this.controller.errors && this.controller.errors.length > 0) return;
+		if (this.controller.errors && this.controller.errors.length > 0) return;
 
 		if (this.job.needDate) {
 			this.job.needDate = new Date(this.job.needDate);
